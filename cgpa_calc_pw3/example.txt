@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Download PDF Example'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async {
+            // Convert the URL to a PDF
+            var pdf = await FlutterHtmlToPdf.convertFromHtmlContent(
+              'https://flutter.dev',
+              'Files\downloads',
+               'output',
+            );
+
+            // Save the PDF file
+
+
+            print('PDF saved');
+          },
+          child: Text('Download PDF'),
+        ),
+      ),
+    );
+  }
+}
